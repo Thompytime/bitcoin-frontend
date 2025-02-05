@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitcoin Price</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+        #quote { font-size: 24px; margin: 20px; }
+        button { padding: 10px 20px; font-size: 16px; }
+    </style>
+</head>
+<body>
+    <h1>bitcoin price</h1>
+    <p id="quote">Click the button to get the latest price!</p>
+    <button onclick="fetchQuote()">Get Latest Price</button>
+
+    <h2>Current Bitcoin Price: <span id="price">$0</span></h2>
+    <button onclick="fetchPrice()">Get Latest Price</button>
+
+
+    <script>
+        async function fetchPrice() {
+    try {
+        const response = await fetch('https://api.yourdomain.com/api/price');
+        const data = await response.json();
+        document.getElementById('price').innerText = `$${data.bitcoin_price_usd}`;
+    } catch (error) {
+        console.error('Error fetching price:', error);
+    }
+}
+
+    </script>
+</body>
+</html>
